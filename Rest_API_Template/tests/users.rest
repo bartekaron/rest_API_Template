@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:3000/api
+@authToken = {{login.response.body.token}}
+
+### Register user 
+# @name register
+
+POST  {{baseUrl}}/users/register
+Content-Type: application/json
+
+{
+    "name": "asd",
+    "email": "asdk@gmail.com",
+    "password": "123456",
+    "phone": "+36-30/333-22-11",
+    "address": "6500 Baja, Béke tér 1."
+}
+
+### login user
+# @name login
+
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email": "teszteva@gmail.com",
+    "password": "123456"
+}
+
+### get all users
+# @name getUsers
+
+GET {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+### get user by id
+GET {{baseUrl}}/users/7466747d-eba8-4250-bb19-9346bbf5a990 	
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+### update user by id
+PATCH {{baseUrl}}/users/7466747d-eba8-4250-bb19-9346bbf5a990
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+{
+    
+    "name": "Teszt Elek",
+    "email": "babos@gmail.com"
+    
+}
+### delete user by id
+DELETE {{baseUrl}}/users/6c57d53d-856c-415d-b8d0-081c459ddb26 	
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+### get logged user profile
+GET {{baseUrl}}/users/profile
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
